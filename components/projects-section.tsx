@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react"
 
 const ScratchVector = ({ className, flip = false }: { className?: string; flip?: boolean }) => (
   <svg
@@ -34,42 +34,57 @@ const projects: Project[] = [
     title: "Charity Trust Website",
     description:
       "A minimal PHP website built with a dedicated admin panel for manually editing and adding contents like works, blogs, photos, videos, YT videos etc.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
-    github: "#",
-    website: "#",
-    technologies: ["PHP", "MySQL", "CSS"],
+      image: "/1.png",
+      website: "http://sonalcharitabletrust.in/#",
+      technologies: ["PHP", "MySQL", "Vanilla CSS"],
   },
   {
-    title: "E-Commerce Platform",
+    title: "foodie-eyes",
     description:
-      "A full-featured e-commerce platform with product management, cart functionality, and secure payment integration.",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=500&fit=crop",
-    github: "#",
-    website: "#",
-    technologies: ["React.js", "Node.js", "MongoDB"],
+      "An intelligent decision-support system designed leveraging Generative AI, Natural Language Understanding and Google Maps data to streamline the dining discovery process; Provides features like bookmarks and manual strict dietary filters.",
+    image: "/2.png",
+    github: "https://github.com/BhavyaOmar/foodie-eyes",
+    website: "https://foodie-eyes.vercel.app/",
+    technologies: ["Next.js", "Typescript", "Firebase", "REST API", "TailwindCSS"],
   },
   {
-    title: "SaaS Dashboard",
+    title: "Artwork Table",
     description:
-      "A comprehensive dashboard solution for SaaS businesses with analytics, user management, and billing integration.",
+      "React + TypeScript application that fetches artwork data from the Art Institute of Chicago API, renders it in a PrimeReact DataTable with server-side pagination, and supports persistent row selection across pages without preloading data.",
+    image: "/3.png",
+    github: "https://github.com/BhavyaOmar/react_assignment",
+    website: "https://bhavya-react-assignment-001.netlify.app/",
+    technologies: ["React.js", "TypeScript", "PrimeReact", "API Integration"],
+  },
+  {
+    title: "Student Management System",
+    description:
+      "A simple and minimal application using PHP and MySQL, implementing CRUD functionality with modular code structure",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
-    github: "#",
-    website: "#",
-    technologies: ["Next.js", "Tailwind", "Stripe"],
+    github: "https://github.com/BhavyaOmar/Student_Details",
+    technologies: ["PHP", "MySQL", "HTML", "CSS"],
+  },
+  {
+    title: "Telegram Channel CTA Website",
+    description:
+      "A lightweight CTA landing page focused on converting visitors into Telegram channel members through a clear, minimal user interface.",
+      image: "/4.png",
+      website: "https://techalumni.netlify.app/",
+      technologies: ["HTML", "Vanilla CSS"],
   },
 ]
 
 export default function ProjectsSection() {
-  const [currentIndex, setCurrentIndex] = useState(0)
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [slideDirection, setSlideDirection] = useState<"left" | "right" | null>(null)
-  const [isAnimating, setIsAnimating] = useState(false)
+  const [isAnimating, setIsAnimating] = useState<boolean>(false)
 
   const goToPrevious = () => {
     if (isAnimating) return
     setIsAnimating(true)
     setSlideDirection("right")
     setTimeout(() => {
-      setCurrentIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1))
+      setCurrentIndex((prev: number) => (prev === 0 ? projects.length - 1 : prev - 1))
       setSlideDirection(null)
       setTimeout(() => setIsAnimating(false), 50)
     }, 300)
@@ -80,7 +95,7 @@ export default function ProjectsSection() {
     setIsAnimating(true)
     setSlideDirection("left")
     setTimeout(() => {
-      setCurrentIndex((prev) => (prev === projects.length - 1 ? 0 : prev + 1))
+      setCurrentIndex((prev: number) => (prev === projects.length - 1 ? 0 : prev + 1))
       setSlideDirection(null)
       setTimeout(() => setIsAnimating(false), 50)
     }, 300)
@@ -89,7 +104,10 @@ export default function ProjectsSection() {
   const currentProject = projects[currentIndex]
 
   return (
-    <section id="projects" className="relative min-h-screen bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section
+      id="projects"
+      className="relative min-h-screen bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
+    >
       {/* Decorative scratches */}
       <div className="absolute left-0 top-1/4 opacity-60 hidden md:block">
         <ScratchVector className="w-20 lg:w-32 h-auto" />
@@ -158,17 +176,23 @@ export default function ProjectsSection() {
                       {currentProject.github && (
                         <a
                           href={currentProject.github}
-                          className="px-4 sm:px-6 py-2 border border-white text-white rounded-md text-sm sm:text-base hover:bg-white/10 transition-colors"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 border border-white text-white rounded-md text-sm sm:text-base hover:bg-white/10 transition-colors"
                         >
-                          Github
+                          <Github className="w-4 h-4" />
+                          <span>Github</span>
                         </a>
                       )}
                       {currentProject.website && (
                         <a
                           href={currentProject.website}
-                          className="px-4 sm:px-6 py-2 border border-white text-white rounded-md text-sm sm:text-base hover:bg-white/10 transition-colors"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-4 sm:px-6 py-2 border border-white text-white rounded-md text-sm sm:text-base hover:bg-white/10 transition-colors"
                         >
-                          Website
+                          <ExternalLink className="w-4 h-4" />
+                          <span>Website</span>
                         </a>
                       )}
                     </div>

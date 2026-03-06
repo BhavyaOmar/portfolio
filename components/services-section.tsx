@@ -77,14 +77,17 @@ export default function ServicesSection() {
   const currentService = services[currentIndex]
 
   return (
-    <section id="services" className="relative min-h-screen bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+    <section
+      id="services"
+      className="relative min-h-screen bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center"
+    >
       {/* Title */}
       <h2 className="font-impact text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white tracking-tight text-center mb-8 sm:mb-12 lg:mb-16">
         SERVICES
       </h2>
 
       {/* Service Card Container */}
-      <div className="relative w-full max-w-5xl mx-auto flex items-center gap-4 sm:gap-6 lg:gap-8">
+      <div className="relative w-full max-w-6xl mx-auto flex items-center gap-4 sm:gap-6 lg:gap-8">
         {/* Left Arrow */}
         <button
           onClick={goToPrevious}
@@ -95,7 +98,7 @@ export default function ServicesSection() {
         </button>
 
         {/* Service Card - Border stays fixed, only content animates */}
-        <div className="relative flex-1 overflow-hidden rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] border-2 border-dashed border-white/70">
+        <div className="relative flex-1 overflow-hidden rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] border-2 border-dashed border-white/70 min-h-[360px] sm:min-h-[420px]">
           <div 
             ref={contentRef}
             className={`relative p-6 sm:p-8 lg:p-12 transition-all duration-300 ease-out ${
@@ -120,11 +123,9 @@ export default function ServicesSection() {
               {/* Right content - Skills box with cropped corner */}
               <div className="lg:w-1/2 flex items-center justify-center">
                 <div
-                  className={`relative w-full max-w-sm aspect-[4/3] ${
-                    currentService.color === "coral"
-                      ? "bg-coral"
-                      : "bg-electric-blue"
-                  } flex items-center justify-center p-4 sm:p-6 transition-colors duration-300`}
+                  className={`relative w-full max-w-sm aspect-[4/3] flex items-center justify-center p-4 sm:p-6 transition-colors duration-300 ${
+                    currentService.color === "coral" ? "bg-coral" : "bg-electric-blue"
+                  }`}
                   style={{
                     clipPath:
                       "polygon(0 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%)",

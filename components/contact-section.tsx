@@ -47,18 +47,18 @@ export default function ContactSection() {
     const centerX = typeof window !== 'undefined' ? window.innerWidth / 2 : 500
     const centerY = typeof window !== 'undefined' ? window.innerHeight / 2 : 400
     
-    // Direction from mouse to the element's base position
-    const dirX = baseX - mousePosition.x
-    const dirY = baseY - mousePosition.y
+    // Direction from base position toward the mouse (so circles feel "sticky" to the cursor)
+    const dirX = mousePosition.x - baseX
+    const dirY = mousePosition.y - baseY
     
     // Distance from mouse
     const distance = Math.sqrt(dirX * dirX + dirY * dirY)
     
     // Only diverge if mouse is close enough
-    if (distance > 300) return { x: 0, y: 0 }
+    if (distance > 350) return { x: 0, y: 0 }
     
     // Normalize and scale by proximity
-    const factor = (300 - distance) / 300 * strength
+    const factor = ((350 - distance) / 350) * strength
     const normalizedX = distance > 0 ? (dirX / distance) * factor : 0
     const normalizedY = distance > 0 ? (dirY / distance) * factor : 0
     
@@ -78,12 +78,17 @@ export default function ContactSection() {
     >
       {/* Animated glow background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        {/* Main white circle */}
-        <div className="absolute w-[300px] h-[300px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] rounded-full bg-white/90" />
-        
-        {/* Pink glow circle - diverges from mouse */}
+        {/* Main white circle - softly follows the mouse */}
         <div
-          className="absolute w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] rounded-full bg-coral/60 blur-3xl transition-transform duration-300 ease-out"
+          className="absolute w-[296px] h-[296px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] lg:w-[590px] lg:h-[590px] rounded-full bg-white/90 transition-transform duration-300 ease-out"
+          style={{
+            transform: `translate(${(mousePosition.x - 300) * 0.03}px, ${(mousePosition.y - 300) * 0.03}px)`,
+          }}
+        />
+        
+        {/* Pink glow circle - attracted to mouse */}
+        <div
+          className="absolute w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] rounded-full bg-coral/60 blur-3xl transition-transform duration-300 ease-out animate-float-pink"
           style={{ 
             top: "10%", 
             left: "20%",
@@ -91,9 +96,9 @@ export default function ContactSection() {
           }}
         />
         
-        {/* Blue glow circle - diverges from mouse */}
+        {/* Blue glow circle - attracted to mouse */}
         <div
-          className="absolute w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] rounded-full bg-electric-blue/60 blur-3xl transition-transform duration-300 ease-out"
+          className="absolute w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[350px] md:h-[350px] lg:w-[400px] lg:h-[400px] rounded-full bg-electric-blue/60 blur-3xl transition-transform duration-300 ease-out animate-float-blue"
           style={{ 
             bottom: "10%", 
             right: "20%",
@@ -116,6 +121,23 @@ export default function ContactSection() {
             bottom: "30%", 
             left: "30%",
             transform: `translate(${calculateDiverge(300, 500, 60).x}px, ${calculateDiverge(300, 500, 60).y}px)`
+          }}
+        />
+        {/* Extra vivid blurry circles for depth */}
+        <div
+          className="absolute w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] lg:w-[220px] lg:h-[220px] rounded-full bg-coral/35 blur-3xl transition-transform duration-200 ease-out"
+          style={{ 
+            top: "15%", 
+            right: "10%",
+            transform: `translate(${calculateDiverge(700, 220, 70).x}px, ${calculateDiverge(700, 220, 70).y}px)`
+          }}
+        />
+        <div
+          className="absolute w-[120px] h-[120px] sm:w-[160px] sm:h-[160px] lg:w-[200px] lg:h-[200px] rounded-full bg-electric-blue/35 blur-3xl transition-transform duration-200 ease-out"
+          style={{ 
+            bottom: "12%", 
+            left: "12%",
+            transform: `translate(${calculateDiverge(260, 540, 70).x}px, ${calculateDiverge(260, 540, 70).y}px)`
           }}
         />
       </div>
@@ -152,6 +174,7 @@ export default function ContactSection() {
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
+                  placeholder="Enter your full name"
                   className="w-full bg-black border border-white rounded-md px-4 py-3 text-white text-sm sm:text-base focus:outline-none focus:border-electric-blue transition-colors"
                   required
                 />
@@ -172,6 +195,7 @@ export default function ContactSection() {
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
+                  placeholder="you@example.com"
                   className="w-full bg-black border border-white rounded-md px-4 py-3 text-white text-sm sm:text-base focus:outline-none focus:border-electric-blue transition-colors"
                   required
                 />
@@ -193,6 +217,7 @@ export default function ContactSection() {
                   setFormData({ ...formData, message: e.target.value })
                 }
                 rows={6}
+                placeholder="Share a bit about your project, idea, or question..."
                 className="w-full bg-black border border-white rounded-md px-4 py-3 text-white text-sm sm:text-base focus:outline-none focus:border-electric-blue transition-colors resize-none"
                 required
               />

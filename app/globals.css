@@ -264,3 +264,56 @@
 .slide-out-right {
   animation: slide-out-right 0.4s ease-out forwards;
 }
+
+/* About section - rotating border rings on hover */
+@keyframes ring-rotate-outer {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes ring-rotate-inner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-180deg);
+  }
+}
+
+.group:hover .ring-outer {
+  animation: ring-rotate-outer 1.2s ease-in-out forwards;
+}
+
+.group:hover .ring-inner {
+  animation: ring-rotate-inner 1.2s ease-in-out forwards;
+}
+
+/* Small ping-pong bubbles in about section */
+@keyframes bubble-ping-pong {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(var(--tx), 0);
+  }
+  50% {
+    transform: translate(var(--tx), var(--ty));
+  }
+  75% {
+    transform: translate(0, var(--ty));
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.bubble-ping-pong {
+  animation-name: bubble-ping-pong;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
