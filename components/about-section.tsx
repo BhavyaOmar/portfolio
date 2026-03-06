@@ -92,15 +92,12 @@ export default function AboutSection() {
           <div className="w-full lg:w-1/2 text-center lg:text-left">
             {/* Title */}
             <div className="mb-6 sm:mb-8">
-              <h2 className="font-impact text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white tracking-tight leading-none">
+              <h2 className="font-impact text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white tracking-tight leading-none inline-block">
                 ABOUT
+                <span className="font-cursive text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-electric-blue inline-block -ml-8 align-baseline">
+                  Me
+                </span>
               </h2>
-              <span 
-                className="font-cursive text-3xl sm:text-4xl lg:text-5xl xl:text-6xl -mt-2 sm:-mt-4 inline-block text-coral"
-                style={{ color: currentColor }}
-              >
-                Me
-              </span>
             </div>
 
             {/* Bio text */}

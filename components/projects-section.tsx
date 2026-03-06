@@ -124,10 +124,10 @@ export default function ProjectsSection() {
       <div className="relative max-w-7xl mx-auto">
         {/* Title */}
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-          <h2 className="font-impact text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white tracking-tight leading-none">
+          <h2 className="font-impact text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white tracking-tight leading-none">
             PROJECTS
           </h2>
-          <span className="font-cursive text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-coral -mt-2 sm:-mt-4 inline-block">
+          <span className="font-cursive text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-coral -mt-2 sm:-mt-4 inline-block ml-6 sm:ml-10 lg:ml-16">
             Showcase
           </span>
         </div>

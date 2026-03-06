@@ -252,9 +252,9 @@ export default function ContactSection() {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="px-10 sm:px-16 py-3 sm:py-4 border-2 border-coral text-white rounded-full text-base sm:text-lg font-medium hover:bg-coral/90 transition-colors"
+                className="px-10 sm:px-16 py-3 sm:py-4 border-2 border-coral text-white rounded-full text-base sm:text-lg font-medium hover:bg-gradient-to-tr from-coral to-electric-blue hover:cursor-pointer "
               >
-                Send !
+                Let's Go !
               </button>
             </div>
           </form>

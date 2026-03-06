@@ -167,7 +167,7 @@ export default function ServicesSection() {
       </div>
 
       {/* Title */}
-      <h2 className="font-impact text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white tracking-tight text-center mb-8 sm:mb-12 lg:mb-16">
+      <h2 className="font-impact text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white tracking-tight text-center mb-8 sm:mb-12 lg:mb-16">
         SERVICES
       </h2>
 

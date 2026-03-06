@@ -103,7 +103,7 @@ const Navbar = () => {
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className={`fixed z-50 flex flex-col items-center justify-center gap-1 rounded-full w-14 h-14 md:w-16 md:h-16 top-4 right-6 md:right-10 transition-all duration-300 ${
+        className={`fixed z-50 flex items-center justify-center rounded-full w-14 h-14 md:w-16 md:h-16 top-4 right-6 md:right-10 transition-all duration-300 ${
           isOpen ? "bg-black" : "bg-white"
         }`}
         style={
@@ -114,16 +114,18 @@ const Navbar = () => {
         aria-label={isOpen ? "Close navigation" : "Open navigation"}
         aria-expanded={isOpen}
       >
-        <span
-          className={`block w-8 h-0.5 rounded-full transition-transform duration-300 origin-center ${
-            isOpen ? "bg-white translate-y-1.5 rotate-45" : "bg-black"
-          }`}
-        />
-        <span
-          className={`block w-8 h-0.5 rounded-full transition-transform duration-300 origin-center ${
-            isOpen ? "bg-white -translate-y-1.5 -rotate-45" : "bg-black"
-          }`}
-        />
+        <div className="relative w-8 h-4 flex flex-col justify-center">
+          <span
+            className={`absolute w-8 h-0.5 rounded-full transition-transform duration-300 ${
+              isOpen ? "bg-white rotate-45 top-1/2 -translate-y-1/2" : "bg-black top-0"
+            }`}
+          />
+          <span
+            className={`absolute w-8 h-0.5 rounded-full transition-transform duration-300 ${
+              isOpen ? "bg-white -rotate-45 top-1/2 -translate-y-1/2" : "bg-black bottom-0"
+            }`}
+          />
+        </div>
       </button>
     </>
   )

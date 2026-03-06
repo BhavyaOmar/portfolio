@@ -73,7 +73,7 @@ export default function HeroSection() {
       <div className="absolute top-10 left-4 sm:left-8 lg:left-16 z-10">
         <p className="text-white text-xs sm:text-sm lg:text-base font-sans whitespace-nowrap">
           <span>{displayText}</span>
-          <span className="inline-block w-[2px] h-[1em] bg-white ml-[1px] animate-pulse align-middle" />
+          <span className="inline-block w-[2px] h-[1em] bg-white ml-px animate-pulse align-middle" />
         </p>
       </div>
       
@@ -86,14 +86,14 @@ export default function HeroSection() {
             src="/P1.svg"
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 w-full h-auto opacity-0 pointer-events-none transition-all duration-300 ease-out group-hover:opacity-100 group-hover:-translate-x-1 group-hover:translate-y-9"
+            className="absolute inset-0 w-full h-full object-contain opacity-0 pointer-events-none transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-1"
           />
           {/* P2 (blue) behind - hidden until hover */}
           <img
             src="/P2.svg"
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 w-full h-auto opacity-0 pointer-events-none transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-1 group-hover:translate-y-8"
+            className="absolute inset-0 w-full h-full object-contain opacity-0 pointer-events-none transition-all duration-300 ease-out group-hover:opacity-100 group-hover:-translate-x-1"
           />
           {/* Main svg */}
           <img

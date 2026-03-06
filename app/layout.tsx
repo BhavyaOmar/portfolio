@@ -15,7 +15,7 @@ const comforter = Comforter({
 });
 
 export const metadata: Metadata = {
-  title: 'Bhavya Omar | Web Designer & Developer',
+  title: 'Bhavya Omar',
   description: 'Portfolio of Bhavya Omar - Web Designer and Developer specializing in MVPs and SaaS platforms',
   generator: 'v0.app',
   icons: {
