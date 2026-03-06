@@ -132,7 +132,7 @@ export default function ProjectsSection() {
           {/* Left Arrow */}
           <button
             onClick={goToPrevious}
-            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-coral flex items-center justify-center hover:bg-coral/10 transition-colors"
+            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-coral flex items-center justify-center hover:-translate-y-1.5 hover:scale-110 transition duration-300"
             aria-label="Previous project"
           >
             <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 text-coral" />
@@ -217,7 +217,7 @@ export default function ProjectsSection() {
           {/* Right Arrow */}
           <button
             onClick={goToNext}
-            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-coral flex items-center justify-center hover:bg-coral/10 transition-colors"
+            className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full border-2 border-coral flex items-center justify-center hover:-translate-y-1.5 hover:scale-110 transition duration-300"
             aria-label="Next project"
           >
             <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 text-coral" />

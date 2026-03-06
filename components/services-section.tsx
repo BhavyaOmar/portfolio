@@ -91,7 +91,7 @@ export default function ServicesSection() {
         {/* Left Arrow */}
         <button
           onClick={goToPrevious}
-          className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 border-2 border-white rounded-lg flex items-center justify-center hover:bg-white/10 transition-colors"
+          className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 border-2 border-white rounded-lg flex items-center justify-center hover:-translate-y-1.5 hover:scale-110 transition duration-300"
           aria-label="Previous service"
         >
           <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white" />
@@ -150,7 +150,7 @@ export default function ServicesSection() {
         {/* Right Arrow */}
         <button
           onClick={goToNext}
-          className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 border-2 border-white rounded-lg flex items-center justify-center hover:bg-white/10 transition-colors"
+          className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 border-2 border-white rounded-lg flex items-center justify-center hover:-translate-y-1.5 hover:scale-110 transition duration-300"
           aria-label="Next service"
         >
           <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-white" />

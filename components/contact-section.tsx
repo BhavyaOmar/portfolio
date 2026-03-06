@@ -35,11 +35,6 @@ export default function ContactSection() {
     }
   }, [])
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-  }
-
   // Calculate diverging offsets for the colored circles based on mouse position
   const calculateDiverge = (baseX: number, baseY: number, strength: number = 50) => {
     if (!isHovering) return { x: 0, y: 0 }
@@ -67,6 +62,34 @@ export default function ContactSection() {
 
   const pinkOffset = calculateDiverge(200, 150, 80)
   const blueOffset = calculateDiverge(800, 650, 80)
+
+  const [result, setResult] = useState("");
+
+  const onSubmit = async (event:any) => {
+    event.preventDefault();
+    setResult("Sending....");
+    const formData = new FormData(event.target);
+    formData.append("access_key", "521c5615-a858-4202-8178-1170761df5f8");
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await response.json();
+    if (data.success) {
+      setResult("Thank you for reaching out. Your message has been successfully submitted. Please allow 24–48 hours for a response.");
+      event.target.reset();
+      // Reset form state
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+    } else {
+      setResult("Error");
+    }
+  };
 
   return (
     <section 
@@ -147,7 +170,7 @@ export default function ContactSection() {
         <div className="border border-white/50 bg-black/80 backdrop-blur-sm rounded-lg p-6 sm:p-8 lg:p-12">
           {/* Title */}
           <div className="text-center mb-8 sm:mb-10 lg:mb-12">
-            <h2 className="inline-block">
+            <h2 className="inline-block py-10">
               <span className="font-cursive text-3xl sm:text-4xl lg:text-5xl text-white italic">
                 {"Let's "}
               </span>
@@ -155,9 +178,11 @@ export default function ContactSection() {
                 Collab !
               </span>
             </h2>
+            <p className="text-blue-200">{result}</p>
           </div>
+          
 
-          <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+          <form onSubmit={onSubmit} className="space-y-6 sm:space-y-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               {/* Name field */}
               <div>
