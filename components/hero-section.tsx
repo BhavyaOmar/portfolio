@@ -65,36 +65,29 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen bg-black flex flex-col items-center justify-center overflow-hidden"
+      className="relative min-h-screen bg-black flex flex-col items-center justify-center overflow-hidden pt-20"
     >
-
-      {/* Decorative scratches - Left - positioned at center */}
-      <div className="absolute left-2 sm:left-6 lg:left-12 xl:left-20 top-1/2 -translate-y-1/2 opacity-60 z-0">
-        <ScratchVector className="w-24 sm:w-32 md:w-40 lg:w-52 xl:w-60 h-auto" />
+      {/* Typewriter text - positioned below header, top left */}
+      <div className="absolute top-10 left-4 sm:left-8 lg:left-16 z-10">
+        <p className="text-white text-xs sm:text-sm lg:text-base font-sans whitespace-nowrap">
+          <span>{displayText}</span>
+          <span className="inline-block w-[2px] h-[1em] bg-white ml-[1px] animate-pulse align-middle" />
+        </p>
       </div>
-      
       
       {/* Main content - PORTFOLIO text centered and large */}
       <div className="relative z-10 text-center w-full px-4">
-        {/* Typewriter text - positioned top right */}
-        <div className="absolute right-4 sm:right-8 lg:right-16 top-0 sm:-top-16 lg:-top-20">
-          <p className="text-white text-xs sm:text-sm lg:text-base font-sans text-right whitespace-nowrap">
-            <span>{displayText}</span>
-            <span className="inline-block w-[2px] h-[1em] bg-white ml-[1px] animate-pulse align-middle" />
-          </p>
-        </div>
-
         {/* PORTFOLIO SVG - Large and centered, overlapping vectors */}
         <img
           src="/PORTFOLIO.svg"
           alt="Portfolio"
-          className="w-full max-w-4xl h-auto mx-auto"
+          className="w-full max-w-6xl h-auto mx-auto py-4 sm:py-6 lg:py-10"
         />
 
-        {/* Black rectangle with subtitle - now overlapping the PORTFOLIO text */}
-        <div className="relative inline-block -mt-2 sm:-mt-4 lg:-mt-6">
-          <div className="bg-black px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-5">
-            <div className="flex flex-wrap items-center justify-center gap-1 sm:gap-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+        {/* Black rectangle with subtitle - full page width, translated up */}
+        <div className="relative -mt-2 sm:-mt-4 lg:-mt-6 -translate-y-4 sm:-translate-y-6 lg:-translate-y-56">
+          <div className="w-screen bg-black px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-5">
+            <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-center gap-1 sm:gap-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
               <span className="font-cursive text-white">Web</span>
               <span className="font-cursive text-coral">Designer</span>
               <span className="font-cursive text-white">and</span>
@@ -102,29 +95,24 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
-
+        
         {/* CTA buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mt-10 sm:mt-14 lg:mt-20">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mt-6 sm:mt-8 lg:mt-10">
           <button
             type="button"
-            onClick={() => scrollToSection("about")}
-            className="px-8 sm:px-10 lg:px-12 py-3 sm:py-4 border-2 border-electric-blue text-white rounded-full font-sans text-sm sm:text-base lg:text-lg hover:bg-electric-blue transition-colors min-w-[160px] sm:min-w-[180px]"
+            onClick={() => scrollToSection("contact")}
+            className="px-8 sm:px-10 lg:px-12 py-3 sm:py-4 border-2 border-electric-blue text-white rounded-full font-sans text-sm sm:text-base lg:text-lg hover:bg-electric-blue hover:cursor-pointer transition-colors min-w-[160px] sm:min-w-[180px]"
           >
-            WHOamI
+            Let's Collab
           </button>
           <button
             type="button"
             onClick={() => scrollToSection("services")}
-            className="px-8 sm:px-10 lg:px-12 py-3 sm:py-4 bg-coral text-white rounded-full font-sans text-sm sm:text-base lg:text-lg border-2 border-coral hover:bg-coral/0 transition-colors min-w-[160px] sm:min-w-[180px]"
+            className="px-8 sm:px-10 lg:px-12 py-3 sm:py-4 bg-coral text-white rounded-full font-sans text-sm sm:text-base lg:text-lg border-2 border-coral hover:cursor-pointer hover:bg-coral/0 transition-colors min-w-[160px] sm:min-w-[180px]"
           >
-            whatIdo
+            What I Offer
           </button>
         </div>
-      </div>
-
-      {/* Decorative bottom scratches */}
-      <div className="absolute bottom-4 sm:bottom-8 right-4 sm:right-8 lg:right-16 opacity-60 z-0 hidden sm:block">
-        <ScratchVector className="w-20 sm:w-28 lg:w-36 h-auto" flip />
       </div>
     </section>
   )
