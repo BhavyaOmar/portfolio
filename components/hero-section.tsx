@@ -79,12 +79,29 @@ export default function HeroSection() {
       
       {/* Main content - PORTFOLIO text centered and large */}
       <div className="relative z-10 text-center w-full px-4">
-        {/* PORTFOLIO SVG - Large and centered, overlapping vectors */}
-        <img
-          src="/PORTFOLIO.svg"
-          alt="Portfolio"
-          className="w-full max-w-6xl h-auto mx-auto py-4 sm:py-6 lg:py-10"
-        />
+        {/* PORTFOLIO SVG - with hidden P1/P2 behind (revealed on hover) */}
+        <div className="relative w-full max-w-6xl h-auto mx-auto py-4 sm:py-6 lg:py-10 group">
+          {/* P1 (pink/coral) behind - hidden until hover */}
+          <img
+            src="/P1.svg"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-auto opacity-0 pointer-events-none transition-all duration-300 ease-out group-hover:opacity-100 group-hover:-translate-x-1 group-hover:translate-y-9"
+          />
+          {/* P2 (blue) behind - hidden until hover */}
+          <img
+            src="/P2.svg"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-auto opacity-0 pointer-events-none transition-all duration-300 ease-out group-hover:opacity-100 group-hover:translate-x-1 group-hover:translate-y-8"
+          />
+          {/* Main svg */}
+          <img
+            src="/PORTFOLIO.svg"
+            alt="Portfolio"
+            className="relative w-full h-auto"
+          />
+        </div>
 
         {/* Black rectangle with subtitle - full page width, translated up */}
         <div className="relative -mt-2 sm:-mt-4 lg:-mt-6 -translate-y-4 sm:-translate-y-6 lg:-translate-y-56">

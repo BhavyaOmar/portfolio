@@ -108,6 +108,11 @@ export default function ProjectsSection() {
       id="projects"
       className="relative min-h-screen bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
+      {/* Background blobs */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        
+      </div>
+
       {/* Decorative scratches */}
       <div className="absolute left-0 top-1/4 opacity-60 hidden md:block">
         <ScratchVector className="w-20 lg:w-32 h-auto" />
@@ -116,7 +121,7 @@ export default function ProjectsSection() {
         <ScratchVector className="w-20 lg:w-32 h-auto" flip />
       </div>
 
-      <div className="max-w-7xl mx-auto">
+      <div className="relative max-w-7xl mx-auto">
         {/* Title */}
         <div className="text-center mb-8 sm:mb-12 lg:mb-16">
           <h2 className="font-impact text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white tracking-tight leading-none">
@@ -139,7 +144,7 @@ export default function ProjectsSection() {
           </button>
 
           {/* Project Card - Border stays fixed, content animates */}
-          <div className="flex-1 border-2 border-coral rounded-lg overflow-hidden bg-gray-900/50 backdrop-blur-sm">
+          <div className="flex-1 border-2 border-coral rounded-lg overflow-hidden bg-white/5 backdrop-blur-2xl">
             <div 
               className={`p-4 sm:p-6 lg:p-8 transition-all duration-300 ease-out ${
                 slideDirection === "left" 

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface Service {
@@ -49,6 +49,55 @@ export default function ServicesSection() {
   const [isAnimating, setIsAnimating] = useState(false)
   const [slideDirection, setSlideDirection] = useState<"left" | "right" | null>(null)
   const contentRef = useRef<HTMLDivElement>(null)
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [isHovering, setIsHovering] = useState(false)
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!sectionRef.current) return
+      const rect = sectionRef.current.getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      setMousePosition({ x, y })
+    }
+
+    const section = sectionRef.current
+    if (section) {
+      section.addEventListener("mousemove", handleMouseMove)
+    }
+
+    return () => {
+      if (section) {
+        section.removeEventListener("mousemove", handleMouseMove)
+      }
+    }
+  }, [])
+
+  const calculateDiverge = (baseX: number, baseY: number, strength: number = 80) => {
+    if (!isHovering) return { x: 0, y: 0 }
+
+    const dirX = baseX - mousePosition.x
+    const dirY = baseY - mousePosition.y
+    const distance = Math.sqrt(dirX * dirX + dirY * dirY)
+    if (distance === 0) return { x: 0, y: 0 }
+
+    const maxRadius = 400
+    if (distance > maxRadius) return { x: 0, y: 0 }
+
+    const factor = ((maxRadius - distance) / maxRadius) * strength
+    const nx = (dirX / distance) * factor
+    const ny = (dirY / distance) * factor
+    return { x: nx, y: ny }
+  }
+
+  const topLeftOffset = calculateDiverge(150, 150, 140)
+  const rightMidOffset = calculateDiverge(900, 300, 160)
+  const bottomCenterOffset = calculateDiverge(600, 600, 120)
+  const bottomRightOffset = calculateDiverge(900, 650, 120)
+  const midCenterOffset = calculateDiverge(600, 350, 130)
+  const leftMidOffset = calculateDiverge(220, 420, 110)
+  const topRightOffset = calculateDiverge(900, 120, 130)
 
   const goToPrevious = () => {
     if (isAnimating) return
@@ -79,8 +128,44 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
+      ref={sectionRef}
       className="relative min-h-screen bg-black py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
     >
+      {/* Background blobs */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div
+          className="absolute -top-24 -left-24 h-[360px] w-[360px] rounded-full bg-electric-blue/25 blur-3xl transition-transform duration-200 ease-out"
+          style={{ transform: `translate(${topLeftOffset.x}px, ${topLeftOffset.y}px)` }}
+        />
+        <div
+          className="absolute top-1/3 -right-24 h-[420px] w-[420px] rounded-full bg-coral/25 blur-3xl transition-transform duration-200 ease-out"
+          style={{ transform: `translate(${rightMidOffset.x}px, ${rightMidOffset.y}px)` }}
+        />
+        <div
+          className="absolute -bottom-24 left-1/3 h-[320px] w-[320px] rounded-full bg-electric-blue/20 blur-3xl transition-transform duration-200 ease-out"
+          style={{ transform: `translate(${bottomCenterOffset.x}px, ${bottomCenterOffset.y}px)` }}
+        />
+        <div
+          className="absolute bottom-10 right-1/4 h-[280px] w-[280px] rounded-full bg-coral/20 blur-3xl transition-transform duration-200 ease-out"
+          style={{ transform: `translate(${bottomRightOffset.x}px, ${bottomRightOffset.y}px)` }}
+        />
+        {/* extra blobs */}
+        <div
+          className="absolute top-1/2 left-1/2 h-[260px] w-[260px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-coral/18 blur-3xl transition-transform duration-200 ease-out"
+          style={{ transform: `translate(${midCenterOffset.x}px, ${midCenterOffset.y}px)` }}
+        />
+        <div
+          className="absolute top-1/4 left-1/3 h-[220px] w-[220px] rounded-full bg-electric-blue/18 blur-3xl transition-transform duration-200 ease-out"
+          style={{ transform: `translate(${leftMidOffset.x}px, ${leftMidOffset.y}px)` }}
+        />
+        <div
+          className="absolute -top-10 right-1/3 h-[260px] w-[260px] rounded-full bg-coral/16 blur-3xl transition-transform duration-200 ease-out"
+          style={{ transform: `translate(${topRightOffset.x}px, ${topRightOffset.y}px)` }}
+        />
+      </div>
+
       {/* Title */}
       <h2 className="font-impact text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white tracking-tight text-center mb-8 sm:mb-12 lg:mb-16">
         SERVICES
@@ -98,7 +183,7 @@ export default function ServicesSection() {
         </button>
 
         {/* Service Card - Border stays fixed, only content animates */}
-        <div className="relative flex-1 overflow-hidden rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] border-2 border-dashed border-white/70 min-h-[360px] sm:min-h-[420px]">
+        <div className="relative flex-1 overflow-hidden rounded-[20px] sm:rounded-[30px] lg:rounded-[40px] border-2 border-dashed border-white/70 min-h-[360px] sm:min-h-[420px] bg-white/5 backdrop-blur-xl">
           <div 
             ref={contentRef}
             className={`relative p-6 sm:p-8 lg:p-12 transition-all duration-300 ease-out ${
