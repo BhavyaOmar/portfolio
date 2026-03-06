@@ -265,13 +265,13 @@
   animation: slide-out-right 0.4s ease-out forwards;
 }
 
-/* About section - rotating border rings on hover */
+/* About section - rotating border rings (continuous) */
 @keyframes ring-rotate-outer {
   0% {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(180deg);
+    transform: rotate(360deg);
   }
 }
 
@@ -280,16 +280,16 @@
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(-180deg);
+    transform: rotate(-360deg);
   }
 }
 
-.group:hover .ring-outer {
-  animation: ring-rotate-outer 1.2s ease-in-out forwards;
+.ring-outer {
+  animation: ring-rotate-outer 6s linear infinite;
 }
 
-.group:hover .ring-inner {
-  animation: ring-rotate-inner 1.2s ease-in-out forwards;
+.ring-inner {
+  animation: ring-rotate-inner 6s linear infinite;
 }
 
 /* Small ping-pong bubbles in about section */
@@ -315,5 +315,42 @@
   animation-name: bubble-ping-pong;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
+}
+
+/* Hero - animated coral/blue shadows for PORTFOLIO svg */
+@keyframes portfolio-shadow-coral {
+  0% { opacity: 0; }
+  10% { opacity: 0.85; }
+  22% { opacity: 0; }
+  60% { opacity: 0.85; } /* "both" phase */
+  72% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+@keyframes portfolio-shadow-blue {
+  0% { opacity: 0; }
+  35% { opacity: 0; }
+  45% { opacity: 0.85; }
+  57% { opacity: 0; }
+  60% { opacity: 0.85; } /* "both" phase */
+  72% { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.portfolio-shadow {
+  opacity: 0;
+  filter: blur(1px);
+  mix-blend-mode: screen;
+  will-change: opacity, filter, transform;
+}
+
+.portfolio-shadow--coral {
+  filter: blur(2px) drop-shadow(0 0 28px rgba(242, 107, 138, 0.95));
+  animation: portfolio-shadow-coral 3.2s ease-in-out infinite;
+}
+
+.portfolio-shadow--blue {
+  filter: blur(2px) drop-shadow(0 0 28px rgba(0, 102, 255, 0.95));
+  animation: portfolio-shadow-blue 3.2s ease-in-out infinite;
 }
 

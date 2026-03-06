@@ -12,7 +12,7 @@ interface Service {
 
 const services: Service[] = [
   {
-    title: "Frontend Developer",
+    title: "Frontend Development",
     description:
       "I develop fast, responsive, and user-friendly interfaces with a focus on clarity, smooth navigation, and engaging experiences.",
     skills:
@@ -20,14 +20,14 @@ const services: Service[] = [
     color: "coral",
   },
   {
-    title: "Backend Developer",
+    title: "Backend Development",
     description:
       "I develop structured server-side systems, APIs, and integrations that support scalable web applications.",
     skills: "PHP, MySQL, LLM Integration, REST API Integration",
     color: "blue",
   },
   {
-    title: "MVP & SaaS Developer",
+    title: "MVP & SaaS Development",
     description:
       "I could turn your product ideas into functional web applications, helping founders quickly test and launch their concepts.",
     skills:

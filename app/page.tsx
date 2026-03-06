@@ -4,13 +4,11 @@ import ServicesSection from "@/components/services-section"
 import ProjectsSection from "@/components/projects-section"
 import ContactSection from "@/components/contact-section"
 import Navbar from "@/components/Navbar"
-import Header from "@/components/Header"
 import Footer from "../components/Footer"
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-black overflow-x-hidden">
-      <Header />
       <Navbar />
       <HeroSection />
       <AboutSection />

@@ -45,13 +45,14 @@ export default function AboutSection() {
   // Glitch animation for profile image source (no rotation on the image itself)
   const [glitch, setGlitch] = useState(false)
 
-  const triggerGlitch = () => {
-    setGlitch(true)
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setGlitch(true)
+      window.setTimeout(() => setGlitch(false), 250)
+    }, 2000)
 
-    setTimeout(() => {
-      setGlitch(false)
-    }, 300) // duration of glitch frame swap
-  }
+    return () => window.clearInterval(interval)
+  }, [])
 
  
   return (
@@ -82,7 +83,6 @@ export default function AboutSection() {
                   src={glitch ? "/G2.jpg" : "/G1.jpeg"}
                   alt="Bhavya Omar - Web Designer and Developer"
                   className="w-full h-full object-cover"
-                  onMouseEnter={triggerGlitch}
                 />
               </div>
             </div>
@@ -96,7 +96,7 @@ export default function AboutSection() {
                 ABOUT
               </h2>
               <span 
-                className="font-cursive text-3xl sm:text-4xl lg:text-5xl xl:text-6xl -mt-2 sm:-mt-4 inline-block transition-colors duration-300"
+                className="font-cursive text-3xl sm:text-4xl lg:text-5xl xl:text-6xl -mt-2 sm:-mt-4 inline-block text-coral"
                 style={{ color: currentColor }}
               >
                 Me

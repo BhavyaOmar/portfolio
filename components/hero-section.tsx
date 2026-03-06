@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Header from "@/components/Header"
 
 const ScratchVector = ({ className, flip = false }: { className?: string; flip?: boolean }) => (
   <svg
@@ -65,8 +66,9 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen bg-black flex flex-col items-center justify-center overflow-hidden pt-20"
+      className="relative min-h-screen bg-black flex flex-col items-center justify-center overflow-hidden pt-20 mb-24 lg:mb-32"
     >
+      <Header />
       {/* Typewriter text - positioned below header, top left */}
       <div className="absolute top-10 left-4 sm:left-8 lg:left-16 z-10">
         <p className="text-white text-xs sm:text-sm lg:text-base font-sans whitespace-nowrap">
