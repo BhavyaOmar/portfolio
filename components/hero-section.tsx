@@ -81,8 +81,8 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen bg-black flex flex-col items-center justify-center overflow-hidden">
       {/* Header */}
-      <header className="absolute top-0 left-0 right-0 flex items-center justify-between p-4 sm:p-6 lg:p-8 z-30">
-        <h1 className="font-impact text-xl sm:text-2xl lg:text-3xl text-electric-blue tracking-wider">
+      <header className="absolute top-0 left-0 right-0 flex items-center justify-between p-4 sm:p-6 lg:p-8 z-30 w-full">
+        <h1 className="font-impact  text-xl sm:text-2xl lg:text-3xl text-electric-blue tracking-wider">
           BHAVYA OMAR
         </h1>
         <button
@@ -123,11 +123,7 @@ export default function HeroSection() {
         <ScratchVector className="w-24 sm:w-32 md:w-40 lg:w-52 xl:w-60 h-auto" />
       </div>
       
-      {/* Decorative scratches - Right - positioned at center */}
-      <div className="absolute right-2 sm:right-6 lg:right-12 xl:right-20 top-1/2 -translate-y-1/2 opacity-60 z-0">
-        <ScratchVector className="w-24 sm:w-32 md:w-40 lg:w-52 xl:w-60 h-auto" flip />
-      </div>
-
+      
       {/* Main content - PORTFOLIO text centered and large */}
       <div className="relative z-10 text-center w-full px-4">
         {/* Typewriter text - positioned top right */}
@@ -138,15 +134,12 @@ export default function HeroSection() {
           </p>
         </div>
 
-        {/* PORTFOLIO text - Large and centered, overlapping vectors */}
-        <h2
-          className="font-impact text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] 2xl:text-[14rem] leading-[0.85] text-white tracking-tight"
-          style={{
-            textShadow: "0 0.12em 0 rgba(100, 100, 100, 0.6)",
-          }}
-        >
-          PORTFOLIO
-        </h2>
+        {/* PORTFOLIO SVG - Large and centered, overlapping vectors */}
+        <img
+          src="/PORTFOLIO.svg"
+          alt="Portfolio"
+          className="w-full max-w-4xl h-auto mx-auto"
+        />
 
         {/* Black rectangle with subtitle - now overlapping the PORTFOLIO text */}
         <div className="relative inline-block -mt-2 sm:-mt-4 lg:-mt-6">
@@ -164,13 +157,13 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mt-10 sm:mt-14 lg:mt-20">
           <a
             href="#about"
-            className="px-8 sm:px-10 lg:px-12 py-3 sm:py-4 border-2 border-electric-blue text-white rounded-full font-sans text-sm sm:text-base lg:text-lg hover:bg-electric-blue/10 transition-colors min-w-[160px] sm:min-w-[180px]"
+            className="px-8 sm:px-10 lg:px-12 py-3 sm:py-4 border-2 border-electric-blue text-white rounded-full font-sans text-sm sm:text-base lg:text-lg hover:bg-electric-blue transition-colors min-w-[160px] sm:min-w-[180px]"
           >
             WHOamI
           </a>
           <a
             href="#services"
-            className="px-8 sm:px-10 lg:px-12 py-3 sm:py-4 bg-coral text-white rounded-full font-sans text-sm sm:text-base lg:text-lg hover:bg-coral/90 transition-colors min-w-[160px] sm:min-w-[180px]"
+            className="px-8 sm:px-10 lg:px-12 py-3 sm:py-4 bg-coral text-white rounded-full font-sans text-sm sm:text-base lg:text-lg border-2 border-coral hover:bg-coral/0 transition-colors min-w-[160px] sm:min-w-[180px]"
           >
             whatIdo
           </a>
