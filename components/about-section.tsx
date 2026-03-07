@@ -94,7 +94,7 @@ export default function AboutSection() {
             <div className="mb-6 sm:mb-8">
               <h2 className="font-impact text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-white tracking-tight leading-none inline-block">
                 ABOUT
-                <span className="font-cursive text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-electric-blue inline-block -ml-8 align-baseline">
+                <span className="font-cursive text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-coral inline-block -ml-8 align-baseline">
                   Me
                 </span>
               </h2>
